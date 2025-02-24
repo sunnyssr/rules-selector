@@ -1,0 +1,65 @@
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco",
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background: rgba(241, 241, 241, 1);
+  color: rgba(48, 48, 48, 1);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  max-width: 998px;
+  padding: 24px;
+  margin: 0 auto;
+}
+.block-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 0.75rem;
+  position: relative;
+  box-shadow: 0rem 0.0625rem 0rem 0rem rgba(26, 26, 26, 0.07);
+  background-color: #ffffff;
+  outline: 0.0625rem solid transparent;
+  padding: 16px;
+}
+
+.heading {
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.heading-sm {
+  font-size: 1rem;
+}
+
+.para {
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.divider {
+  border: 0;
+  margin: 0;
+  border-block-start: 0.0625rem solid rgba(235, 235, 235, 1);
+}
+
+.btn {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: 0rem -0.0625rem 0rem 0rem #b5b5b5 inset,
+    0rem 0rem 0rem 0.0625rem rgba(0, 0, 0, 0.1) inset,
+    0rem 0.03125rem 0rem 0.09375rem #fff inset;
+  font-size: 0.75rem;
+}

@@ -1,0 +1,64 @@
+.rule-list {
+  display: flex;
+  flex-direction: column;
+}
+.rule-row {
+  padding-left: 3rem;
+  position: relative;
+}
+.rule-row-form {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.rule-row:nth-child(1)::before {
+  display: none;
+}
+
+.rule-row:nth-child(1)::after {
+  top: 1rem;
+  height: calc(100% - 0.75rem);
+}
+
+.rule-row:nth-last-child(1)::after {
+  display: none;
+}
+
+.rule-row::after {
+  width: 1.5rem;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 1.5rem;
+  height: calc(100% - 1rem);
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  top: 1.25rem;
+}
+.rule-row::before {
+  width: 1.5rem;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 1.5rem;
+  height: 1rem;
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  top: -0.25rem;
+}
+
+.rule-row-join {
+  color: rgba(84, 84, 84, 1);
+  padding: 0.25rem;
+  width: 3rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.rule-row .tag-list {
+  margin-top: 0.5rem;
+}

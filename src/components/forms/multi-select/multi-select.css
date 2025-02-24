@@ -1,0 +1,133 @@
+.form-multi-select {
+  position: relative;
+  display: inline-block;
+}
+
+.form-multi-select input {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: initial;
+  text-rendering: auto;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem;
+  box-sizing: border-box;
+}
+
+.form-multi-select-content {
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  min-height: 32px;
+  position: relative;
+  line-height: 1.25;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem;
+}
+
+.form-multi-select-search-text {
+  font-size: 0.875rem;
+  flex: 1 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-multi-select-placeholder {
+  font-size: 0.875rem;
+  flex: 1 1;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-multi-select input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 4px;
+}
+.form-multi-select-search-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: rgba(138, 138, 138, 1);
+  margin-right: 0.25rem;
+}
+
+.form-multi-select .options-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 0.5rem;
+}
+
+.form-multi-select .options-list .option {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+  display: flex;
+}
+.form-multi-select .options-list .option:nth-child(1) {
+  margin-top: 0.5rem;
+}
+
+.form-multi-select .options-list .option:nth-last-child(1) {
+  margin-bottom: 0.5rem;
+}
+
+.form-multi-select .options-list .option:hover {
+  background-color: #f5f5f5;
+}
+
+.form-multi-select .options-list .option.highlighted {
+  background-color: #ebebeb;
+}
+
+.form-multi-select-backdrop {
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 0.04125rem solid rgba(138, 138, 138, 1);
+  border-radius: 0.5rem;
+  background-color: rgba(253, 253, 253, 1);
+  position: absolute;
+}
+
+.form-multi-select input:active ~ .form-multi-select-backdrop {
+  border: none;
+  box-shadow: 0rem 0.125rem 0.0625rem 0rem rgba(26, 26, 26, 0.2) inset,
+    0.0625rem 0rem 0.0625rem 0rem rgba(26, 26, 26, 0.12) inset,
+    -0.0625rem 0rem 0.0625rem 0rem rgba(26, 26, 26, 0.12) inset;
+  background-color: rgba(247, 247, 247, 1);
+}
+.form-multi-select input:focus-visible ~ .form-multi-select-backdrop {
+  border-color: rgba(26, 26, 26, 1);
+  border-width: 0.0625rem;
+  background-color: rgba(247, 247, 247, 1);
+  outline: 0.125rem solid rgba(0, 91, 211, 1);
+  outline-offset: 0.0625rem;
+}
