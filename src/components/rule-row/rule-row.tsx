@@ -18,12 +18,14 @@ import {
 import { type Rule } from "../rules-selector";
 import "./rule-row.css";
 import TagList from "../forms/tag-list/tag-list";
+import { XIcon } from "../common/icons";
 
 type RuleRowProps = {
   rule: Rule;
   setRules: React.Dispatch<React.SetStateAction<Rule[]>>;
   ruleTypesInUse: RuleType[];
   isMutuallyExclusive: boolean;
+  isSingleRule?: boolean;
 };
 
 const RuleRow = (props: RuleRowProps) => {
@@ -80,54 +82,70 @@ const RuleRow = (props: RuleRowProps) => {
     });
   };
 
+  const deleteRule = () => {
+    props.setRules((rules) =>
+      rules.filter((rule) => rule.id !== props.rule.id)
+    );
+  };
+
   const operatorsForSelectedRuleType = ruleConfig.operators;
   const selectedOperatorInputConfig =
     operatorsForSelectedRuleType[props.rule.operator];
 
   return (
     <div className="rule-row">
-      <div className="rule-row-form">
-        <Select
-          value={props.rule.ruleType}
-          options={ruleTypeGroups.map((ruleTypeGroup) => ({
-            title: ruleTypeGroup.groupTitle,
-            options: ruleTypeGroup.options.map((ruleType) => ({
-              label: RuleTypeLabels[ruleType],
-              value: ruleType,
-              disabled:
-                props.ruleTypesInUse.includes(ruleType) &&
-                props.rule.ruleType !== ruleType,
-            })),
-          }))}
-          onChange={(value) => updateRule({ ruleType: value as RuleType })}
-        />
-
-        {operatorsForSelectedRuleType.DEFAULT ? null : (
+      <div>
+        <div className="rule-row-form">
           <Select
-            value={props.rule.operator ?? undefined}
-            options={
-              operatorsForSelectedRuleType
-                ? Object.keys(operatorsForSelectedRuleType).map((operator) => ({
-                    label: OperatorLabels[operator as Operator],
-                    value: operator,
-                    disabled:
-                      props.isMutuallyExclusive &&
-                      operator === Operator.CONTAINS_ANY,
-                  }))
-                : []
-            }
-            onChange={(value) => updateRule({ operator: value as Operator })}
+            value={props.rule.ruleType}
+            options={ruleTypeGroups.map((ruleTypeGroup) => ({
+              title: ruleTypeGroup.groupTitle,
+              options: ruleTypeGroup.options.map((ruleType) => ({
+                label: RuleTypeLabels[ruleType],
+                value: ruleType,
+                disabled:
+                  props.ruleTypesInUse.includes(ruleType) &&
+                  props.rule.ruleType !== ruleType,
+              })),
+            }))}
+            onChange={(value) => updateRule({ ruleType: value as RuleType })}
           />
+
+          {operatorsForSelectedRuleType.DEFAULT ? null : (
+            <Select
+              value={props.rule.operator ?? undefined}
+              options={
+                operatorsForSelectedRuleType
+                  ? Object.keys(operatorsForSelectedRuleType).map(
+                      (operator) => ({
+                        label: OperatorLabels[operator as Operator],
+                        value: operator,
+                        disabled:
+                          props.isMutuallyExclusive &&
+                          operator === Operator.CONTAINS_ANY,
+                      })
+                    )
+                  : []
+              }
+              onChange={(value) => updateRule({ operator: value as Operator })}
+            />
+          )}
+          {props.rule.operator !== Operator.EQUALS_ANYTHING ? (
+            <RuleValueInput
+              ruleType={props.rule.ruleType}
+              operator={props.rule.operator}
+              value={props.rule.value}
+              updateRule={updateRule}
+            />
+          ) : null}
+        </div>
+        {props.isSingleRule ? null : (
+          <button className="rule-row-delete-button" onClick={deleteRule}>
+            <XIcon className="rule-row-delete-icon" />
+          </button>
         )}
-        {props.rule.operator !== Operator.EQUALS_ANYTHING ? (
-          <RuleValueInput
-            ruleType={props.rule.ruleType}
-            operator={props.rule.operator}
-            value={props.rule.value}
-            updateRule={updateRule}
-          />
-        ) : null}
       </div>
+
       {selectedOperatorInputConfig?.type === InputTypes.RESOURCE_SELECT ? (
         <TagList
           tags={(props.rule.value as ResourceValue).map((resource) => {

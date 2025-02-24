@@ -6,6 +6,14 @@
   padding-left: 3rem;
   position: relative;
 }
+
+.rule-row > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .rule-row-form {
   width: 100%;
   display: grid;
@@ -61,4 +69,23 @@
 
 .rule-row .tag-list {
   margin-top: 0.5rem;
+}
+
+.rule-row-delete-button {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  padding: 0.375rem;
+  border-radius: 9999px;
+  transition: all ease-in 0.2s;
+}
+
+.rule-row-delete-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #303030;
+}
+
+.rule-row-delete-button:hover {
+  background: #d4d4d4;
 }

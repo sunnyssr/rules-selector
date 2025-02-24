@@ -84,10 +84,11 @@ const RulesSelector = () => {
                 {rules.map((rule, i) => (
                   <Fragment key={rule.id}>
                     <RuleRow
-                      ruleTypesInUse={ruleTypesInUse}
-                      key={rule.id}
                       rule={rule}
                       setRules={setRules}
+                      key={rule.id}
+                      ruleTypesInUse={ruleTypesInUse}
+                      isSingleRule={rules.length === 1}
                       isMutuallyExclusive={isMutuallyExclusiveWithAnyOtherRule(
                         RuleTypesConfig[rule.ruleType],
                         rules
