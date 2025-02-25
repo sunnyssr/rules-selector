@@ -24,7 +24,7 @@ export type Rule = {
 
 const RulesSelector = () => {
   const [rules, setRules] = useState<Rule[]>(() => {
-    const ruleType = RuleType.SPECIFIC_PRODUCTS;
+    const ruleType = ruleTypesByOrder[0];
     const operators = RuleTypesConfig[ruleType].operators;
     const initialOperator = Object.keys(operators)[0] as Operator;
     return [

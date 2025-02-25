@@ -211,9 +211,9 @@ export const ruleTypeGroups = [
   {
     groupTitle: "Products",
     options: [
-      RuleType.SPECIFIC_PRODUCTS,
-      RuleType.PRODUCT_TAGS,
       RuleType.SPECIFIC_COLLECTIONS,
+      RuleType.PRODUCT_TAGS,
+      RuleType.SPECIFIC_PRODUCTS,
       RuleType.PRODUCT_SUBSCRIBED,
     ],
   },
